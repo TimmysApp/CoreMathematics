@@ -8,11 +8,11 @@
 import Foundation
 @testable import PhysicsKit
 
-struct Basic: Variable {
-    var name: String
-    var multiplier: Multiplier?
-}
-
-
-let x = Basic(name: "X")
-let y = Basic(name: "Y")
+//struct Basic: Variable {
+//    var name: String
+//    var value: Double?
+//}
+//
+//
+//let x = Basic(name: "X")
+//let y = Basic(name: "Y")

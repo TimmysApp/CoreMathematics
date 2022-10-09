@@ -8,37 +8,18 @@
 import Foundation
 
 extension Int: Variable, Doubleable {
-    public var name: String {
-        get {
-            return "Int"
-        }
-    }
-    public var multiplier: Multiplier? {
-        get {
-           nil
-        }
-        set {
-        }
-    }
     public var double: Double {
         Double(self)
     }
 }
 
-extension Double: Variable, Doubleable {
-    public var name: String {
-        get {
-            return "Double"
-        }
-    }
-    public var multiplier: Multiplier? {
-        get {
-           nil
-        }
-        set {
-        }
-    }
+extension Double: Doubleable {
     public var double: Double {
         self
     }
+}
+
+public struct Fraction {
+    var top: Int
+    var bottom: Int
 }
