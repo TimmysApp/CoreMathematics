@@ -48,3 +48,8 @@ public extension Variable {
         return value
     }
 }
+
+func abs(_ root: Variable) -> AbsoluteValue {
+    AbsoluteValue(root: root)
+}
+

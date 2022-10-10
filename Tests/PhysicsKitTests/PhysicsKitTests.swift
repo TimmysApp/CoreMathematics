@@ -42,8 +42,9 @@ final class OperationsTests: XCTestCase {
         test.compute(with: (x, 5))
         XCTAssertEqual(test.value, 5/8)
     }
-//    func testRegulars() {
-//        let equation = Equation(left: x + 1, right: 6*x - 4)
-//        XCTAssertEqual(equation.solve(), 1)
-//    }
+    //Turns out that the Varibale operators are fundamentally flawed, + is skipping the - 5. Either + or - minus or both are flawed
+    func testPolynomial() {
+        let test = 8*x - 5 + x*x
+        XCTAssertEqual(test.polynomial?.coefficients, [0: -5.0, 1: 8.0, 2: 1])
+    }
 }
