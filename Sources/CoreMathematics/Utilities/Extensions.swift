@@ -13,13 +13,8 @@ extension Int: Variable, Doubleable {
     }
 }
 
-extension Double: Doubleable {
+extension Double: Variable, Doubleable {
     public var double: Double {
         self
     }
-}
-
-public struct Fraction {
-    var top: Int
-    var bottom: Int
 }

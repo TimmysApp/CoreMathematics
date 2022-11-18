@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@testable import PhysicsKit
+@testable import CoreMathematics
 
 //struct Basic: Variable {
 //    var name: String

@@ -8,6 +8,7 @@
 import Foundation
 
 public struct Function: Variable {
+//MARK: - Properties
     public var name = "Function"
     public var components: [Variable]
     public var value: Double?

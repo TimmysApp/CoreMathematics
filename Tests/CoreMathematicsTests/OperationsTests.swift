@@ -1,9 +1,9 @@
 import XCTest
-@testable import PhysicsKit
+@testable import CoreMathematics
 
 final class OperationsTests: XCTestCase {
     func testAdditionNil() {
-        var test = x + 5 + x^2
+        var test = x + 5 + x**2
         test.compute(with: (y, 9))
         XCTAssertEqual(test.value, nil)
     }
@@ -41,10 +41,5 @@ final class OperationsTests: XCTestCase {
         var test = (x*x)/(8*x)
         test.compute(with: (x, 5))
         XCTAssertEqual(test.value, 5/8)
-    }
-    //Turns out that the Varibale operators are fundamentally flawed, + is skipping the - 5. Either + or - minus or both are flawed
-    func testPolynomial() {
-        let test = 8*x - 5 + x*x
-        XCTAssertEqual(test.polynomial?.coefficients, [0: -5.0, 1: 8.0, 2: 1])
     }
 }

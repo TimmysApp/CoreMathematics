@@ -7,17 +7,21 @@
 
 import Foundation
 
+infix operator **: BitwiseShiftPrecedence
+
+//MARK: - Operators
 public extension Variable {
     static func +(left: Self, right: Variable) -> Function {
         var components = [Variable]()
         if let function = left as? Function {
             components.append(contentsOf: function.components)
+        }else {
+            components.append(left)
         }
         if let function = right as? Function {
             components.append(contentsOf: function.components)
-        }
-        if components.isEmpty {
-            components = [left, right]
+        }else {
+            components.append(right)
         }
         return Function(components: components)
     }
@@ -28,12 +32,13 @@ public extension Variable {
         var components = [Variable]()
         if let function = left as? Function {
             components.append(contentsOf: function.components)
+        }else {
+            components.append(left)
         }
         if let function = right as? Function {
             components.append(contentsOf: function.components.map({Multiplication(left: -1, right: $0)}))
-        }
-        if components.isEmpty {
-            components = [left, Multiplication(left: -1, right: right)]
+        }else {
+            components.append(Multiplication(left: -1, right: right))
         }
         return Function(components: components)
     }
@@ -43,7 +48,11 @@ public extension Variable {
     static func /(left: Self, right: Variable) -> Function {
         return Function(components: [Division(top: left, bottom: right)])
     }
-    static func ^(left: Self, right: Variable) -> Variable {
-        return Power(root: left, power: right)
+    static func **(left: Self, right: Variable) -> Function {
+        return Function(components: [Power(root: left, power: right)])
     }
+}
+
+public func abs(_ root: Variable) -> AbsoluteValue {
+    AbsoluteValue(root: root)
 }
