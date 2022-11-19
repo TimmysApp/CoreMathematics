@@ -19,18 +19,23 @@ final class PolynomialTests: XCTestCase {
     }
     func testRoot1() {
         let test = (2*x + 4).polynomial
-        XCTAssertEqual(test?.root, [-2])
+        XCTAssertEqual(test?.root.contains(where: {$0.value == -2}), true)
     }
     func testRoot2Positive() {
         let test = (4*x + x**2 + 4).polynomial
-        XCTAssertEqual(test?.root, [-2, -2])
+        XCTAssertEqual(test?.root.filter({$0.value == -2}).count == 2, true)
     }
-//    func testRoot2Negative() {//Not Implemented
-//        let test = (2*x + x**2 + 4).polynomial
-//        XCTAssertEqual(test?.root, [2, -2])
-//    }
+    func testRoot2Negative() {
+        let test = (x + x**2 + 4).polynomial
+        print(test?.root)
+        XCTAssertEqual(test?.root.filter({$0.value == -2}).count == 2, false)
+    }
+    func testRootSecant() {
+        let test = (4*x + x**2 + 4).polynomial
+        XCTAssertEqual(test?.secant().filter({$0.value == -2}).count == 2, false)
+    }
     func testEquation() {
         let test = Equation(left: 4*x + x**2 + 6, right: 2)
-        XCTAssertEqual(test.solve(), [-2, -2])
+        XCTAssertEqual(test.solve().filter({$0.value == -2}).count == 2, true)
     }
 }

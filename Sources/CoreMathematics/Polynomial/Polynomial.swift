@@ -13,7 +13,7 @@ public struct Polynomial {
     public var order: Int {
         coefficients.order
     }
-    public var root: [Double] {
+    public var root: [any Variable] {
         guard order > 0 else {return []}
         if order == 1 {
             return [(-coefficients[order: 0])/coefficients[order: 1]]
@@ -24,9 +24,14 @@ public struct Polynomial {
                 let root2 = (-coefficients[order: 1] + sqrt(delta)) / 2 * coefficients[order: 2]
                 return [root1, root2]
             }else {
-                //complex numbers
+                let root1 = (-coefficients[order: 1] - (sqrt(abs(delta)) * i)) / 2 * coefficients[order: 2]
+                let root2 = (-coefficients[order: 1] + (sqrt(abs(delta)) * i)) / 2 * coefficients[order: 2]
+                return [root1, root2]
             }
         }
+        return []
+    }
+    internal func secant() -> [any Variable] {
         return []
     }
 }

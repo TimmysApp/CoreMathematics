@@ -15,3 +15,5 @@ public struct Basic: Variable {
 public let x = Basic(name: "X")
 public let y = Basic(name: "Y")
 public let z = Basic(name: "Z")
+public let e = Basic(name: "e", value: 2.718)
+public let i = Basic(name: "i")

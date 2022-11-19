@@ -20,13 +20,10 @@ public struct Equation<Left: Variable, Right: Variable> {
         self.right = right
     }
 //MARK: - Functions
-    public func solve() -> [Double] {
+    public func solve() -> [Variable] {
         if let polynomial = function.polynomial {
             return polynomial.root
         }
         return []
-    }
-    internal func secant() {
-        
     }
 }
